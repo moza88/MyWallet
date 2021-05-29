@@ -3,7 +3,7 @@ import './App.css';
 import React, {Component} from 'react'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import PricingDashboard from './components/PricingDashboard'
-import CryptoList from "./components/CryptoList";
+import Index from './components/Index'
 
 //Load Properties File
 //require('dotenv').config()
@@ -15,20 +15,10 @@ class App extends Component {
 
   render() {
     return (
-        <Router>
-          <Route exact={true} path='/' render={() => (
-              <div className="App">
-                <PricingDashboard/>
-              </div>
-          )}/>
+        <div className="App">
+            <Index />
 
-            <Route exact={true} path='/dashboard' render={() => (
-                <div className="App">
-                    <CryptoList/>
-                </div>
-            )}/>
-
-        </Router>
+        </div>
     )
   }
 }
