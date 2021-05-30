@@ -1,11 +1,11 @@
 
 import React, {Component} from "react";
-import Header from './Header';
+import Header from '../Header';
 import { useState, useEffect } from "react";
-import {loadExchangeTicker_allcurrpairs} from "./FetchTickerPrice";
+import {loadExchangeTicker_allcurrpairs} from "../server/FetchTickerPrice";
 import {Button, Card, CardActions, CardContent, CardHeader, Typography, Grid} from "@material-ui/core";
-import FiatComboBox from "./FiatComboBox";
-import CryptoComboBox from "./CryptoComboBox";
+import FiatComboBox from "../FiatComboBox";
+import CryptoComboBox from "../CryptoComboBox";
 
 require('dotenv').config()
 
@@ -36,7 +36,7 @@ curl -X GET "https://api.blockchain.com/v3/exchange/tickers/BTC-USD" -H  "accept
                 console.log(data)
 
                 const cryptos = data.map(c =>
-                    <Grid item xs={12} sm={6} md={3}>
+                    <Grid item xs={12} sm={6} md={3} key={c.symbol}>
 
                         <Card>
                             <CardHeader
@@ -72,8 +72,6 @@ curl -X GET "https://api.blockchain.com/v3/exchange/tickers/BTC-USD" -H  "accept
     render() {
         return (
             <div>
-                <Header />
-                <br/><br/><br/><br/><br/>
                 <div align="center">
                     <h2>Add your currency pairs</h2>
 
